@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  app:
+    image: node:16-alpine
+    working_dir: /app
+    volumes:
+      - ./backend:/app
+    command: sh -c "npm install express && node server.js"
+    ports:
+      - "3000:3000"
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./frontend:/usr/share/nginx/html
+    restart: unless-stopped

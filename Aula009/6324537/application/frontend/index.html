@@ -1,0 +1,36 @@
+cat > 6324537/application/frontend/index.html << 'EOF'
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Portfólio - Lucas Henrique</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #121212; color: #fff; text-align: center; padding-top: 50px; }
+        .card { background: #1e1e1e; padding: 20px; border-radius: 8px; display: inline-block; border: 1px solid #333; }
+        .status-ok { color: #00ff00; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>🚀 Portfólio ADS - UniFAAT</h1>
+        <p><strong>Aluno:</strong> Lucas Henrique | <strong>RA:</strong> 6324537</p>
+        <hr>
+        <div id="api-status">Conectando à API na nuvem...</div>
+    </div>
+
+    <script>
+        async function checkApi() {
+            try {
+                const res = await fetch('/api/info');
+                const data = await res.json();
+                document.getElementById('api-status').innerHTML = 
+                    `<p class="status-ok">✅ ${data.message}</p>`;
+            } catch (e) {
+                document.getElementById('api-status').innerText = "❌ API Offline (Aguardando Deploy)";
+            }
+        }
+        checkApi();
+    </script>
+</body>
+</html>
+EOF
