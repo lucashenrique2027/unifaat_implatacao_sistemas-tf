@@ -21,7 +21,4 @@ echo "LOG: Comando planejado para criar Subnet Pública"
 echo "LOG: Configuração de Firewall (Portas 22, 80 e 3000) preparada."
 
 echo "🎯 Script de automação pronto para execução pós-configuração de conta."
-EOF
-
-# Dá a permissão de execução
-chmod +x infrastructure/create-infrastructure.sh
+EOFcd
