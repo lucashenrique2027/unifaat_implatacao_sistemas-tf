@@ -1,0 +1,19 @@
+{
+  "AlarmName": "RDSHighCPU_6324537",
+  "AlarmDescription": "Alarme para uso alto de CPU na instância RDS",
+  "AWSRegion": "us-east-1",
+  "MetricName": "CPUUtilization",
+  "Namespace": "AWS/RDS",
+  "Statistic": "Average",
+  "Dimensions": [
+    {
+      "Name": "DBInstanceIdentifier",
+      "Value": "tf10-rds-6324537"
+    }
+  ],
+  "Period": 300,
+  "EvaluationPeriods": 2,
+  "Threshold": 70.0,
+  "ComparisonOperator": "GreaterThanThreshold",
+  "AlarmActions": ["arn:aws:sns:us-east-1:123456789012:NotifyMe"]
+}
