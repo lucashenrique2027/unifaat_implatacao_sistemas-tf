@@ -1,0 +1,15 @@
+cat > Aula011/6324537/lambda/image-processor/index.js << 'EOF'
+// AWS Lambda - Processamento Dinâmico de Imagens (Tratamento de Assets do S3)
+exports.handler = async (event) => {
+    console.log("Evento recebido do S3:", JSON.stringify(event, null, 2));
+    
+    // Simulação do redimensionamento de imagem usando sharp
+    return {
+        statusCode: 200,
+        body: JSON.stringify({
+            message: "Imagem otimizada e redimensionada com sucesso no bucket de assets!",
+            timestamp: new Date().toISOString()
+        })
+    };
+};
+EOF

@@ -1,0 +1,6 @@
+body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; padding: 20px; background: #f4f6f9; color: #333; }
+header { background: #232f3e; color: white; padding: 20px; text-align: center; border-radius: 6px; }
+nav { margin: 20px 0; text-align: center; }
+nav a { margin: 0 15px; color: #232f3e; text-decoration: none; font-weight: bold; }
+main { background: white; padding: 20px; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); max-width: 800px; margin: 0 auto; }
+footer { text-align: center; margin-top: 40px; font-size: 0.8em; color: #666; }

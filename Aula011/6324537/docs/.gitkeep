@@ -1,0 +1,33 @@
+cat > Aula011/6324537/docker-compose.yml << 'EOF'
+version: '3.8'
+
+services:
+  # Simula a hospedagem estática e distribuição (S3/CloudFront)
+  website:
+    image: nginx:alpine
+    container_name: lucas_portfolio_web
+    ports:
+      - "8080:80"
+    volumes:
+      - ./website:/usr/share/nginx/html
+    networks:
+      - portfolio_net
+
+  # Simula o ambiente AWS (S3, Lambda, DynamoDB) localmente
+  localstack:
+    image: localstack/localstack
+    container_name: lucas_aws_local
+    ports:
+      - "4566:4566"
+    environment:
+      - SERVICES=s3,lambda,apigateway,dynamodb
+      - AWS_DEFAULT_REGION=us-east-1
+    volumes:
+      - "${LOCALSTACK_VOLUME_DIR:-./.localstack}:/var/lib/localstack"
+    networks:
+      - portfolio_net
+
+networks:
+  portfolio_net:
+    driver: bridge
+EOF
