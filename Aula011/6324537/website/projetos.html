@@ -1,23 +1,16 @@
-cat > Aula011/6324537/website/projetos.html << 'EOF'
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projetos | Lucas Henrique</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding: 20px; background: #f4f4f9; color: #333; }
-        header { background: #232f3e; color: white; padding: 20px; text-align: center; border-radius: 5px; }
-        nav { margin: 20px 0; text-align: center; }
-        nav a { margin: 0 15px; color: #232f3e; text-decoration: none; font-weight: bold; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px; }
-        .card { background: white; padding: 20px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-    </style>
+    <meta name="description" content="Projetos de engenharia de software e nuvem do portfólio de Lucas Henrique.">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <header>
-        <h1>Meus Projetos</h1>
-        <p>Portfólio Técnico de Engenharia de Software</p>
+        <h1>Projetos</h1>
+        <p>Galeria de projetos técnicos e trabalhos em nuvem.</p>
     </header>
     <nav>
         <a href="index.html">Início</a>
@@ -25,16 +18,20 @@ cat > Aula011/6324537/website/projetos.html << 'EOF'
         <a href="experiencia.html">Experiência</a>
         <a href="contato.html">Contato</a>
     </nav>
-    <div class="grid">
-        <div class="card">
-            <h3>TF04 - Nginx Load Balancing</h3>
-            <p>Configuração avançada de servidores Nginx locais atuando como proxy reverso e balanceadores de carga para otimização de requisições.</p>
-        </div>
-        <div class="card">
-            <h3>TF11 - Serverless Portfolio</h3>
-            <p>Este sistema atual! Hospedagem estática e segura com automação de infraestrutura em nuvem na AWS.</p>
-        </div>
-    </div>
+    <main>
+        <section class="grid">
+            <article class="card">
+                <h2>TF11 - Portfólio AWS</h2>
+                <p>Website estático em S3 com distribuição CloudFront e integrações serverless para contato.</p>
+            </article>
+            <article class="card">
+                <h2>TF04 - Load Balancing</h2>
+                <p>Configuração de balanceamento de carga com Nginx e infraestrutura de rede.</p>
+            </article>
+        </section>
+    </main>
+    <footer>
+        <p>© 2026 Lucas Henrique. Trabalho TF11.</p>
+    </footer>
 </body>
 </html>
-EOF

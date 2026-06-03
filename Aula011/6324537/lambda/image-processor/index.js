@@ -1,7 +1,10 @@
+const AWS = require('aws-sdk');
+
 exports.handler = async (event) => {
-    console.log("Gatilho S3 disparado:", JSON.stringify(event));
+    console.log('Evento S3 recebido para processamento de imagem:', JSON.stringify(event, null, 2));
+    // TODO: adicionar lógica de redimensionamento com Sharp ou outro pacote apropriado.
     return {
         statusCode: 200,
-        body: JSON.stringify({ message: "Imagem otimizada com sucesso no bucket de assets." })
+        body: JSON.stringify({ message: 'Processamento de imagem recebido.' }),
     };
 };

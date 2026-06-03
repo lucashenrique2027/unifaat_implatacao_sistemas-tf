@@ -1,25 +1,37 @@
-cat > Aula011/6324537/infrastructure/create-buckets.sh << 'EOF'
 #!/bin/bash
-
-# Script de Infraestrutura S3 - TF11
-# Aluno: Lucas Henrique - RA: 6324537
+set -e
 
 BUCKET_WEB="lucas-portfolio-website-6324537"
 BUCKET_ASSETS="lucas-portfolio-assets-6324537"
+REGION="us-east-1"
 
-echo "☁️ Iniciando provisionamento de armazenamento AWS S3..."
+function create_bucket() {
+    local bucket="$1"
+    if aws s3api head-bucket --bucket "$bucket" 2>/dev/null; then
+        echo "Bucket $bucket já existe. Pulando criação."
+        return
+    fi
 
-# 1. Criar Bucket Principal (Website)
-# aws s3api create-bucket --bucket $BUCKET_WEB --region us-east-1
-echo "LOG: Planejado criar bucket de hospedagem: $BUCKET_WEB"
+    if [ "$REGION" = "us-east-1" ]; then
+        aws s3api create-bucket --bucket "$bucket" --region "$REGION"
+    else
+        aws s3api create-bucket --bucket "$bucket" --region "$REGION" --create-bucket-configuration LocationConstraint="$REGION"
+    fi
+    echo "Bucket criado: $bucket"
+}
 
-# Configurar o Hosting Estático
-# aws s3api put-bucket-website --bucket $BUCKET_WEB --website-configuration '{"IndexDocument":{"Suffix":"index.html"},"ErrorDocument":{"Key":"error.html"}}'
-echo "LOG: Configuração de Static Website Hosting aplicada para index.html."
+echo "Criando buckets S3..."
+create_bucket "$BUCKET_WEB"
+create_bucket "$BUCKET_ASSETS"
 
-# 2. Criar Bucket de Assets (Imagens/Documentos)
-# aws s3api create-bucket --bucket $BUCKET_ASSETS --region us-east-1
-echo "LOG: Planejado criar bucket de assets: $BUCKET_ASSETS"
+echo "Configurando hospedagem estática para $BUCKET_WEB..."
+aws s3 website "s3://$BUCKET_WEB" --index-document index.html --error-document error.html
 
-echo "🚀 Infraestrutura de Storage mapeada com sucesso para o CloudFront!"
-EOF
+echo "Habilitando versionamento..."
+aws s3api put-bucket-versioning --bucket "$BUCKET_WEB" --versioning-configuration Status=Enabled
+aws s3api put-bucket-versioning --bucket "$BUCKET_ASSETS" --versioning-configuration Status=Enabled
+
+echo "Publicando conteúdo para $BUCKET_WEB..."
+aws s3 sync ../website/ "s3://$BUCKET_WEB/" --acl public-read
+
+echo "Buckets criados e site publicado com sucesso."

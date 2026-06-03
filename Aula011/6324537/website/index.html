@@ -1,23 +1,16 @@
-cat > Aula011/6324537/website/index.html << 'EOF'
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lucas Henrique | Portfólio Cloud & Full Stack</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding: 20px; background: #f4f4f9; color: #333; line-height: 1.6; }
-        header { background: #232f3e; color: white; padding: 20px; text-align: center; border-radius: 5px; }
-        nav { margin: 20px 0; text-align: center; }
-        nav a { margin: 0 15px; color: #232f3e; text-decoration: none; font-weight: bold; }
-        main { background: white; padding: 20px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        footer { text-align: center; margin-top: 40px; font-size: 0.8em; color: #777; }
-    </style>
+    <title>Lucas Henrique | Portfólio AWS</title>
+    <meta name="description" content="Portfólio profissional de Lucas Henrique com hospedagem em AWS S3 e distribuição via CloudFront.">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <header>
         <h1>Lucas Henrique</h1>
-        <p>Estudante de Análise e Desenvolvimento de Sistemas | AWS & Full Stack</p>
+        <p>Portfólio profissional em AWS S3 + CloudFront</p>
     </header>
     <nav>
         <a href="index.html">Início</a>
@@ -26,13 +19,23 @@ cat > Aula011/6324537/website/index.html << 'EOF'
         <a href="contato.html">Contato</a>
     </nav>
     <main>
-        <h2>Sobre Mim</h2>
-        <p>Olá! Seja bem-vindo ao meu portfólio hospedado de forma estática na nuvem AWS utilizando Amazon S3 e distribuído globalmente pelo CloudFront CDN.</p>
-        <p>Sou desenvolvedor focado em soluções modernas, arquiteturas serverless e gerenciamento de banco de dados SQL/NoSQL.</p>
+        <section>
+            <h2>Bem-vindo ao meu portfólio</h2>
+            <p>Sou estudante de Análise e Desenvolvimento de Sistemas com foco em soluções em nuvem, automação e desenvolvimento web.</p>
+        </section>
+        <section>
+            <h3>O que este projeto entrega</h3>
+            <ul>
+                <li>Website estático hospedado no Amazon S3</li>
+                <li>Distribuição rápida via CloudFront</li>
+                <li>Frontend responsivo</li>
+                <li>Formulário de contato integrado com Lambda e DynamoDB</li>
+            </ul>
+        </section>
     </main>
     <footer>
-        <p>© 2026 Lucas Henrique. Desenvolvido para a disciplina de Implementação de Sistemas - UniFAAT.</p>
+        <p>© 2026 Lucas Henrique. Trabalho TF11 - Implementação de Sistemas.</p>
     </footer>
+    <script src="js/main.js"></script>
 </body>
 </html>
-EOF
